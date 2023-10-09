@@ -16,7 +16,11 @@ export default class Team {
     this.characters = characters;
   }
 
+  set characters(array) {
+    this._characters = array;
+  }
+
   get characters() {
-    return this.characters;
+    return this._characters;
   }
 }

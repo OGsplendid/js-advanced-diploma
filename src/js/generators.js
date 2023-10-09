@@ -13,7 +13,7 @@ import Team from './Team';
 export function* characterGenerator(allowedTypes, maxLevel) {
   const index = Math.floor(Math.random() * allowedTypes.length);
   const level = Math.floor(Math.random() * maxLevel + 1);
-  yield new allowedTypes[index](level);
+  yield new (allowedTypes[index])(level);
 }
 
 /**
@@ -30,5 +30,5 @@ export function generateTeam(allowedTypes, maxLevel, characterCount) {
     const newChar = playerGenerator.next().value;
     actualCharacters.push(newChar);
   }
-  return actualCharacters;
+  return new Team(actualCharacters);
 }
