@@ -30,5 +30,10 @@ export function generateTeam(allowedTypes, maxLevel, characterCount) {
     const newChar = playerGenerator.next().value;
     actualCharacters.push(newChar);
   }
+  actualCharacters.forEach((char) => {
+    if (char.level > 1) {
+      char.levelUp(char.level);
+    }
+  });
   return new Team(actualCharacters);
 }

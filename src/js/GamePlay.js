@@ -6,6 +6,7 @@ export default class GamePlay {
     this.container = null;
     this.boardEl = null;
     this.cells = [];
+    this.selectedCell = null;
     this.cellClickListeners = [];
     this.cellEnterListeners = [];
     this.cellLeaveListeners = [];
@@ -163,7 +164,7 @@ export default class GamePlay {
   }
 
   onNewGameClick(event) {
-    event.preventDefault();
+    // event.preventDefault();
     this.newGameListeners.forEach((o) => o.call(null));
   }
 
@@ -191,10 +192,9 @@ export default class GamePlay {
   }
 
   deselectCell(index) {
-    this.cells.forEach((cell) => cell.classList.remove('selected'));
-    // const cell = this.cells[index];
-    // cell.classList.remove(...Array.from(cell.classList)
-    //   .filter((o) => o.startsWith('selected')));
+    const cell = this.cells[index];
+    cell.classList.remove(...Array.from(cell.classList)
+      .filter((o) => o.startsWith('selected')));
   }
 
   showCellTooltip(message, index) {
